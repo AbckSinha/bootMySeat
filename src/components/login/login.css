@@ -1,0 +1,45 @@
+.center {
+  text-align: center;
+}
+.container {
+  width: 600px;
+  margin: auto;
+}
+.margin-top {
+  margin-top: 4%;
+}
+.labels {
+  color: white;
+}
+.login-btn {
+  background-color: #149e0f;
+  color: white;
+}
+
+.bgcolor {
+  background-color: #0000cc;
+}
+.center {
+  text-align: center;
+}
+.form {
+  border: 2px solid rgb(37, 3, 3);
+  background-color: #3f51b5;
+  padding: 20px;
+}
+.textcolor {
+  color: white;
+}
+.visibility {
+  visibility: hidden;
+}
+.screen {
+  border: 5px solid black;
+  padding: 20px;
+  margin: 20px;
+}
+.button {
+  margin: 30px;
+  color: #841584;
+  background-color: #e6e6e6;
+}
