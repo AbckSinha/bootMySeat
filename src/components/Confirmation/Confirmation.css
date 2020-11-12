@@ -1,0 +1,19 @@
+.boxed {
+  height: 500px;
+  width: 800px;
+  border: 2px solid green;
+}
+.seatLabel {
+  font-size: Large;
+  color: Blue;
+  font-weight: bold;
+}
+.lists {
+  color: black;
+  font-weight: bold;
+}
+.complete {
+  padding: 10px;
+  background-color: green;
+  color: white;
+}

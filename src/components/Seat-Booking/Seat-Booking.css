@@ -7,3 +7,72 @@
 .format-select {
   width: 573px;
 }
+
+#app {
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  width: 600px;
+  margin: auto;
+}
+
+.grid td {
+  width: 90px;
+  height: 50px;
+  border: 2px solid green;
+  border-radius: 5px;
+  text-align: center;
+  float: left;
+  margin: 5px;
+}
+
+.grid td:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.reserved {
+  background: green;
+  color: #fff;
+  display: inline-block;
+}
+
+.selected {
+  background: orange;
+  color: #fff;
+  display: inline-block;
+}
+.confirmed {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+.confirmed::after {
+  content: "Confirmed";
+}
+.reserved::after {
+  content: "RESERVED";
+}
+
+.selected::after {
+  content: "SELECTED";
+}
+
+.available::after {
+  content: "AVAILABLE";
+}
+
+.available {
+  color: #333;
+}
+
+li {
+  list-style: none;
+}
+
+.btnmargin {
+  margin-top: 15px;
+}

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import "./login.css";
-// import Seatbooking from "./Seatbooking";
 
 class Login extends Component {
   constructor(props) {
@@ -9,6 +7,7 @@ class Login extends Component {
     this.state = {
       userName: "",
       password: "",
+      error: false,
       entryType:
         localStorage.getItem("entryType") === null ? "Register" : "Login",
     };
@@ -32,8 +31,9 @@ class Login extends Component {
     if (this.state.userName == "admin" && this.state.password == "admin") {
       localStorage.setItem("entryType", "loggedIn");
       this.props.history.push("/seat");
+    } else {
+      this.setState({ error: true });
     }
-    this.setState({ book: true });
   };
 
   render() {
@@ -65,6 +65,10 @@ class Login extends Component {
               />
             </div>
 
+            {this.state.error && (
+              <span className="error">Invalid User name or Password</span>
+            )}
+            <br></br>
             <input
               type="submit"
               value={this.state.entryType}

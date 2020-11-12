@@ -9,20 +9,78 @@ class Seat extends Component {
       format: "3D",
       hall: "",
       book: false,
+      seat: [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A10",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+      ],
+      seatAvailable: [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6",
+        "A7",
+        "A8",
+        "A9",
+        "A10",
+        "B1",
+        "B2",
+        "B3",
+        "B4",
+        "B5",
+        "B6",
+        "B7",
+        "B8",
+        "B9",
+        "B10",
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5",
+        "C6",
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+      ],
+      seatReserved: localStorage.getItem("reserved")
+        ? localStorage.getItem("reserved")
+        : [],
+      seatSelected: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.submit = this.submit.bind(this);
-    const {
-      REACT_APP_NUMBER_OF_3D_SEATS,
-      REACT_APP_NUMBER_OF_3D_SEATS_WITH_GLASS,
-      REACT_APP_PRICE_OF_3D_SEATS,
-      REACT_APP_PRICE_OF_3D_SEATS_WITH_GLASS,
-    } = process.env;
-    console.log(
-      "PRICE_OF_3D_SEATS_WITH_GLASS",
-      REACT_APP_PRICE_OF_3D_SEATS_WITH_GLASS
-    );
   }
 
   handleChange(event) {
@@ -41,9 +99,43 @@ class Seat extends Component {
     this.setState({ book: true });
   };
 
+  onClickData(seat) {
+    console.log("seat", seat);
+    if (this.state.seatReserved.indexOf(seat) > -1) {
+      this.setState({
+        seatAvailable: this.state.seatAvailable.concat(seat),
+        seatReserved: this.state.seatReserved.filter((res) => res != seat),
+      });
+    } else {
+      this.setState({
+        seatReserved: this.state.seatReserved.concat(seat),
+        seatAvailable: this.state.seatAvailable.filter((res) => res != seat),
+      });
+    }
+  }
+
+  checktrue(row) {
+    if (this.state.seatSelected.indexOf(row) > -1) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  handleSubmited() {
+    this.setState({
+      seatSelected: this.state.seatSelected.concat(this.state.seatReserved),
+    });
+    console.log(this.state.seatReserved);
+    localStorage.setItem("reserved", this.state.seatReserved);
+    this.setState({
+      seatReserved: [],
+    });
+    this.props.history.push("/confirmation");
+  }
+
   submit = () => {
     if (this.state.format === "3D") {
-      REACT_APP_NUMBER_OF_3D_SEATS.map;
     }
   };
 
@@ -97,15 +189,22 @@ class Seat extends Component {
           </div>
         </form>
         <div>
-          <Grid
-            seat={this.state.seat}
-            available={this.state.seatAvailable}
-            reserved={this.state.seatReserved}
-            selected={this.state.seatSelected}
-            onClickData={this.onClickData.bind(this)}
-            checktrue={this.checktrue.bind(this)}
-            handleSubmited={this.handleSubmited.bind(this)}
-          />
+          {this.state.book && (
+            <Grid
+              seat={this.state.seat}
+              available={this.state.seatAvailable}
+              reserved={this.state.seatReserved}
+              selected={this.state.seatSelected}
+              confirmed={
+                localStorage.getItem("reserved")
+                  ? localStorage.getItem("reserved")
+                  : []
+              }
+              onClickData={this.onClickData.bind(this)}
+              checktrue={this.checktrue.bind(this)}
+              handleSubmited={this.handleSubmited.bind(this)}
+            />
+          )}
         </div>
       </div>
     );

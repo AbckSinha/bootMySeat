@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class DrawGrid extends Component {
+class Grid extends Component {
   render() {
     return (
       <div className="container">
@@ -10,8 +10,11 @@ class DrawGrid extends Component {
             <tr>
               {this.props.seat.map((row) => (
                 <td
+                  title="Normal 3D seat"
                   className={
-                    this.props.selected.indexOf(row) > -1
+                    this.props.confirmed.indexOf(row) > -1
+                      ? "confirmed"
+                      : this.props.selected.indexOf(row) > -1
                       ? "reserved"
                       : this.props.reserved.indexOf(row) > -1
                       ? "selected"
@@ -30,6 +33,7 @@ class DrawGrid extends Component {
             </tr>
           </tbody>
         </table>
+
         <button
           type="button"
           className="btn-success btnmargin"
@@ -45,3 +49,5 @@ class DrawGrid extends Component {
     this.props.onClickData(seat);
   }
 }
+
+export default Grid;

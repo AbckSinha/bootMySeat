@@ -11,9 +11,10 @@ h1 {
 }
 
 .grid td {
-  width: 80px;
+  width: 90px;
   height: 50px;
-  border: 2px solid orange;
+  border: 2px solid green;
+  border-radius: 5px;
   text-align: center;
   float: left;
   margin: 5px;
@@ -31,9 +32,12 @@ h1 {
 }
 
 .selected {
-  background: red;
+  background: green;
   color: #fff;
   display: inline-block;
+}
+.confirmed {
+  background-color: indigo;
 }
 
 .reserved::after {
