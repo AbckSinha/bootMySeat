@@ -99,7 +99,7 @@ class Seat extends Component {
     this.setState({ book: true });
   };
 
-  onClickData(seat) {
+  onSeatClick(seat) {
     console.log("seat", seat);
     if (this.state.seatReserved.indexOf(seat) > -1) {
       this.setState({
@@ -200,7 +200,7 @@ class Seat extends Component {
                   ? localStorage.getItem("reserved")
                   : []
               }
-              onClickData={this.onClickData.bind(this)}
+              onSeatClick={this.onSeatClick.bind(this)}
               checktrue={this.checktrue.bind(this)}
               handleSubmited={this.handleSubmited.bind(this)}
             />

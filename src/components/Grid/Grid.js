@@ -46,7 +46,7 @@ class Grid extends Component {
   }
 
   onClickSeat(seat) {
-    this.props.onClickData(seat);
+    this.props.onSeatClick(seat);
   }
 }
 

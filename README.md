@@ -6,6 +6,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
+### `npm install`
+
+It will install all dependency for the project
+
+### Login credential
+
+User name = admin
+password = admin
+
+login validation are in place using localStorage
+
+.env file can be used to pass the dynamic values in application
+
 ### `npm start`
 
 Runs the app in the development mode.\
